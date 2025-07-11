@@ -2,18 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_best_practices/dialogs/confirm_dialog.dart';
 import 'package:flutter_best_practices/managers/theme_manager.dart';
 import 'package:flutter_best_practices/provider.dart';
-import 'package:flutter_best_practices/router.dart';
 import 'package:flutter_best_practices/services/auth_service.dart';
 import 'package:flutter_best_practices/themes/core_theme.dart';
 import 'package:flutter_best_practices/utils/logging.dart';
-import 'package:go_router/go_router.dart';
 
-class ThemeModeChoice {
+enum ThemeModeChoice {
+  system(
+    mode: ThemeMode.system,
+    label: 'System Default',
+    icon: Icons.settings,
+  ),
+  light(
+    mode: ThemeMode.light,
+    label: 'Light',
+    icon: Icons.wb_sunny,
+  ),
+  dark(
+    mode: ThemeMode.dark,
+    label: 'Dark',
+    icon: Icons.nightlight,
+  );
+
   final ThemeMode mode;
   final String label;
   final IconData icon;
 
-  ThemeModeChoice({
+  const ThemeModeChoice({
     required this.mode,
     required this.label,
     required this.icon,
@@ -30,24 +44,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> with Logging {
   late ThemeData _theme;
   final _themeManager = Provider.get<ThemeManager>();
-
-  final List<ThemeModeChoice> _themeChoices = [
-    ThemeModeChoice(
-      mode: ThemeMode.system,
-      label: 'System Default',
-      icon: Icons.settings,
-    ),
-    ThemeModeChoice(
-      mode: ThemeMode.light,
-      label: 'Light',
-      icon: Icons.wb_sunny,
-    ),
-    ThemeModeChoice(
-      mode: ThemeMode.dark,
-      label: 'Dark',
-      icon: Icons.nightlight_round,
-    ),
-  ];
 
   @override
   initState() {
@@ -74,7 +70,6 @@ class _SettingsPageState extends State<SettingsPage> with Logging {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Appearance Section
                 Text(
                   'Appearance',
                   style: _theme.textTheme.titleLarge,
@@ -94,9 +89,6 @@ class _SettingsPageState extends State<SettingsPage> with Logging {
                   ),
                 ),
 
-                const Divider(height: 40),
-
-                // Account Section
                 Text(
                   'Account',
                   style: _theme.textTheme.titleLarge,
@@ -118,7 +110,7 @@ class _SettingsPageState extends State<SettingsPage> with Logging {
       value: _themeManager.themeMode,
       borderRadius: BorderRadius.zero,
       items: [
-        for (final choice in _themeChoices)
+        for (final choice in ThemeModeChoice.values)
           DropdownMenuItem(
             value: choice.mode,
             child: Row(
