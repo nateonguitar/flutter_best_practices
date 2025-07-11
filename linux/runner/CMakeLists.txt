@@ -24,3 +24,6 @@ target_link_libraries(${BINARY_NAME} PRIVATE flutter)
 target_link_libraries(${BINARY_NAME} PRIVATE PkgConfig::GTK)
 
 target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
+
+# Install the binary to a directory within the user's home folder
+install(TARGETS ${BINARY_NAME} DESTINATION $ENV{HOME}/flutter_apps)
