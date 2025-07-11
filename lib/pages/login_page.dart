@@ -155,6 +155,8 @@ class _LoginPageState extends State<LoginPage> with Logging {
     final username = _controllers.username.text.trim();
     final password = _controllers.password.text.trim();
 
+    _loggingIn = true;
+    setState(() {});
     try {
       await _authService.login(
         username: username,
@@ -167,6 +169,11 @@ class _LoginPageState extends State<LoginPage> with Logging {
           SnackBar(content: Text('Login failed: $e')),
         );
       }
-    } finally {}
+    } finally {
+      _loggingIn = false;
+      if (mounted) {
+        setState(() {});
+      }
+    }
   }
 }

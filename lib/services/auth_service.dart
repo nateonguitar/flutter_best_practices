@@ -49,6 +49,7 @@ class MockAuthService extends AuthService with Logging {
   }) async {
     log('MockAuthService.login called with: $username / $password');
     checkNetworkConnectivity();
+    await Future.delayed(const Duration(milliseconds: 1000));
     if (username == errorEmail) {
       throw DioException(requestOptions: RequestOptions(path: 'login'));
     }
@@ -65,7 +66,7 @@ class MockAuthService extends AuthService with Logging {
     if (authToken.value == null) {
       throw Error();
     }
-    await Future.delayed(const Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 500));
     if (!validateAuthTokenSuccess) {
       throw DioException(
         requestOptions: RequestOptions(
