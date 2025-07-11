@@ -56,7 +56,6 @@ class _SettingsPageState extends State<SettingsPage> with Logging {
     _theme = Theme.of(context);
 
     return Scaffold(
-      backgroundColor: _theme.cardTheme.color ?? _theme.scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text('Settings'),
       ),
