@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  final String title;
-
   const HomePage({
     super.key,
-    required this.title,
   });
 
   @override
@@ -13,10 +10,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late ThemeData _theme;
   int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
+    _theme = Theme.of(context);
     return Scaffold(
       appBar: _appBar(),
       body: _bodyWidget(),
@@ -26,8 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   AppBar _appBar() {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: Text(widget.title),
+      title: const Text('Home Page'),
     );
   }
 
@@ -39,7 +37,7 @@ class _HomePageState extends State<HomePage> {
           const Text('You have pushed the button this many times:'),
           Text(
             '$_counter',
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: _theme.textTheme.headlineMedium,
           ),
         ],
       ),

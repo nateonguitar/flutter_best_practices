@@ -1,0 +1,90 @@
+{
+    "workbench.colorCustomizations": {
+        // "titleBar.activeBackground": "#0077a3",
+        // "titleBar.activeForeground": "#d4a735",
+        // "activityBar.background": "#878787",
+        // "activityBar.foreground": "#050051",
+        // "activityBar.inactiveForeground": "#050051",
+        // "activityBar.dropBorder": "#050051",
+        // "activityBar.border": "#050051",
+        // "activityBar.activeBackground": "#b5b5b5",
+        // "activityBar.activeBorder": "#050051",
+        // "activityBarBadge.foreground": "#dbdbdb",
+        // "activityBarBadge.background": "#0077a3",
+        // "titleBar.inactiveBackground": "#004a76",
+    },
+    "files.exclude": {
+        "**/.git": false,
+        "**/.pyc": true
+    },
+    "files.watcherExclude": {
+        "**/build/**": true,
+        "**/.dart_tool/**": true,
+        "**/.idea/**": true,
+        "**/out/**": true
+    },
+    "search.exclude": {
+        "**/build/**": true,
+        "**/.dart_tool/**": true,
+        "**/.idea/**": true,
+        "**/out/**": true
+    },
+    "window.commandCenter": true,
+    "debug.toolBarLocation": "commandCenter",
+    "better-comments.tags": [
+        {
+            "tag": "!",
+            "color": "#FF2D00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "?",
+            "color": "#3498DB",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "//",
+            "color": "#474747",
+            "strikethrough": true,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "*",
+            "color": "#98C379",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": false,
+            "italic": false
+        },
+        {
+            "tag": "CUSTOMEXAMPLE",
+            "color": "#FF00FF",
+            "strikethrough": false,
+            "underline": false,
+            "backgroundColor": "transparent",
+            "bold": true,
+            "italic": false
+        }
+    ]
+}
