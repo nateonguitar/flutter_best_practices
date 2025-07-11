@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_best_practices/build_config.dart';
 import 'package:flutter_best_practices/provider.dart';
 import 'package:flutter_best_practices/services/auth_service.dart';
 import 'package:flutter_best_practices/themes/core_theme.dart';
@@ -7,6 +8,11 @@ import 'package:flutter_best_practices/utils/logging.dart';
 class _Controllers {
   final username = TextEditingController();
   final password = TextEditingController();
+
+  void initFromAutofill(LoginAutofill loginAutofill) {
+    username.text = loginAutofill.username;
+    password.text = loginAutofill.password;
+  }
 
   void trimAll() {
     username.text = username.text.trim();
@@ -25,9 +31,19 @@ class _LoginPageState extends State<LoginPage> with Logging {
   final _authService = Provider.get<AuthService>();
 
   bool _loggingIn = false;
+  bool _showPassword = false;
 
   final _controllers = _Controllers();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    final loginAutofill = BuildConfig.instance.loginAutofill;
+    if (loginAutofill != null) {
+      _controllers.initFromAutofill(loginAutofill);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,32 +75,34 @@ class _LoginPageState extends State<LoginPage> with Logging {
     return Column(
       spacing: 16,
       children: [
-        _formWidget(),
+        Card(
+          child: Padding(
+            padding: CoreTheme.cardSectionPadding,
+            child: Form(
+              key: _formKey,
+              child: Column(
+                spacing: 8,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _usernameField(),
+                  _passwordField(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: _saveButton(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
         Align(
           alignment: Alignment.centerRight,
           child: _forgotPasswordButton(),
         ),
       ],
-    );
-  }
-
-  Widget _formWidget() {
-    return Form(
-      key: _formKey,
-      child: Card(
-        child: Padding(
-          padding: CoreTheme.cardSectionPadding,
-          child: Column(
-            spacing: 8,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _usernameField(),
-              _passwordField(),
-              _saveButton(),
-            ],
-          ),
-        ),
-      ),
     );
   }
 
@@ -108,11 +126,20 @@ class _LoginPageState extends State<LoginPage> with Logging {
   Widget _passwordField() {
     return TextFormField(
       controller: _controllers.password,
-      decoration: const InputDecoration(
+      decoration: InputDecoration(
         labelText: 'Password',
+        suffixIcon: IconButton(
+          icon: Icon(
+            _showPassword ? Icons.visibility : Icons.visibility_off,
+          ),
+          onPressed: () {
+            _showPassword = !_showPassword;
+            setState(() {});
+          },
+        ),
       ),
       enabled: !_loggingIn,
-      obscureText: true,
+      obscureText: !_showPassword,
       validator: (value) {
         value = (value ?? '').trim();
         if (value.isEmpty) {
@@ -124,15 +151,9 @@ class _LoginPageState extends State<LoginPage> with Logging {
   }
 
   Widget _saveButton() {
-    return Row(
-      children: [
-        Expanded(
-          child: ElevatedButton(
-            onPressed: _loggingIn ? null : _save,
-            child: const Text('Login'),
-          ),
-        ),
-      ],
+    return ElevatedButton(
+      onPressed: _loggingIn ? null : _save,
+      child: const Text('Login'),
     );
   }
 

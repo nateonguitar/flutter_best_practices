@@ -27,8 +27,7 @@ Future<void> main() async {
     // mockNetworkLatencyDuration: const Duration(seconds: 1),
     apiUrl: apiUrl,
     loginAutofill: LoginAutofill(
-      email: 'guru.pro@test.com',
-      // email: 'asdf@asdf.com',
+      username: 'username1',
       password: r'Test1234$',
     ),
     environment: Environment.development,
