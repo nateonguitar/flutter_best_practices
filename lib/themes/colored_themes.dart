@@ -51,7 +51,6 @@ class DarkTheme extends ThemeGenerator {
   @override
   ThemeData generate({required ThemeData baseTheme}) {
     const errorColor = Color(0xFFB83B52);
-    const disabledColor = Color(0xFF6D6D6D);
 
     final colorScheme = ColorScheme(
       brightness: Brightness.dark,
@@ -69,7 +68,7 @@ class DarkTheme extends ThemeGenerator {
     );
 
     final themeColors = ThemeColors(
-      navBackgroundColor: CoreTheme.lightPurpleColor,
+      navBackgroundColor: const Color.fromARGB(255, 111, 50, 151),
       inputBackgroundColor: const Color(0xFF121212),
       errorContainerBackground: errorColor.withAlpha(25),
     );
@@ -80,7 +79,7 @@ class DarkTheme extends ThemeGenerator {
       themeColors: themeColors,
       disabledColor: const Color(0xFF949393),
       unselectedWidgetColor: const Color(0xFF949393),
-      buttonColor: CoreTheme.purpleColor,
+      buttonColor: const Color(0xFF7730B9),
       appBarBackgroundColor: CoreTheme.darkPurpleColor,
       dividerColor: const Color(0xFF686868),
       inputBorderColor: const Color(0xFF575E65),

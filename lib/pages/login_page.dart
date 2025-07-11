@@ -28,6 +28,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> with Logging {
+  late ThemeData _theme;
   final _authService = Provider.get<AuthService>();
 
   bool _loggingIn = false;
@@ -47,17 +48,20 @@ class _LoginPageState extends State<LoginPage> with Logging {
 
   @override
   Widget build(BuildContext context) {
+    _theme = Theme.of(context);
+
     return Scaffold(
-      appBar: _appBar(),
-      body: SingleChildScrollView(
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              maxWidth: CoreTheme.pageContentMaxWidth,
-            ),
-            child: Padding(
-              padding: CoreTheme.pagePadding,
-              child: _bodyWidget(),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: CoreTheme.pageContentMaxWidth,
+              ),
+              child: Padding(
+                padding: CoreTheme.pagePadding,
+                child: _bodyWidget(),
+              ),
             ),
           ),
         ),
@@ -65,16 +69,11 @@ class _LoginPageState extends State<LoginPage> with Logging {
     );
   }
 
-  AppBar _appBar() {
-    return AppBar(
-      title: const Text('Login'),
-    );
-  }
-
   Widget _bodyWidget() {
     return Column(
-      spacing: 16,
+      spacing: 24,
       children: [
+        _logoWidget(),
         Card(
           child: Padding(
             padding: CoreTheme.cardSectionPadding,
@@ -103,6 +102,15 @@ class _LoginPageState extends State<LoginPage> with Logging {
           child: _forgotPasswordButton(),
         ),
       ],
+    );
+  }
+
+  Widget _logoWidget() {
+    return Text(
+      'Logo goes here',
+      style: _theme.textTheme.headlineMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 
