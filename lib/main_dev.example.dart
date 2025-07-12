@@ -7,6 +7,7 @@ import 'package:flutter_best_practices/build_config.dart';
 import 'package:flutter_best_practices/mock_data.dart';
 import 'package:flutter_best_practices/run_app.dart';
 import 'package:flutter_best_practices/services/auth_service.dart';
+import 'package:flutter_best_practices/services/connectivity_service.dart';
 import 'package:flutter_best_practices/services/product_service.dart';
 
 Future<void> main() async {
@@ -32,10 +33,10 @@ Future<void> main() async {
     ),
     environment: Environment.development,
   );
-  MockData.generate(
-  );
+  MockData.generate();
   await runApplication(
     providerOverrides: {
+      // ConnectivityService: () => MockConnectivityService(connected: false),
       AuthService: () => MockAuthService(
         validateAuthTokenSuccess: false,
       ),
