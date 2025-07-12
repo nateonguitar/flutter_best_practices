@@ -127,7 +127,12 @@ ThemeData _coloredTheme({
     appBarTheme: baseTheme.appBarTheme.copyWith(
       backgroundColor: appBarBackgroundColor,
       foregroundColor: colorScheme.onPrimary,
-      iconTheme: IconThemeData(color: colorScheme.onPrimary),
+      iconTheme: IconThemeData(
+        color: colorScheme.onPrimary,
+      ),
+    ),
+    iconTheme: baseTheme.iconTheme.copyWith(
+      color: colorScheme.onSurface,
     ),
     listTileTheme: baseTheme.listTileTheme.copyWith(
       textColor: colorScheme.onSurface,
@@ -244,6 +249,20 @@ ThemeData _coloredTheme({
     bottomSheetTheme: baseTheme.bottomSheetTheme.copyWith(
       backgroundColor: colorScheme.surface,
       dragHandleColor: dividerColor,
+    ),
+    navigationRailTheme: baseTheme.navigationRailTheme.copyWith(
+      backgroundColor: themeColors.navBackgroundColor,
+      selectedIconTheme: IconThemeData(
+        color: colorScheme.onPrimary,
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: unselectedWidgetColor,
+      ),
+      selectedLabelTextStyle: baseTheme.navigationRailTheme.selectedLabelTextStyle
+          ?.copyWith(color: colorScheme.onPrimary),
+      unselectedLabelTextStyle: baseTheme
+          .navigationRailTheme.unselectedLabelTextStyle
+          ?.copyWith(color: unselectedWidgetColor),
     ),
     bottomNavigationBarTheme: baseTheme.bottomNavigationBarTheme.copyWith(
       selectedItemColor: colorScheme.onSecondary,
