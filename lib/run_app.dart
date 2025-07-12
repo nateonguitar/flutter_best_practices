@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_best_practices/app.dart';
 import 'package:flutter_best_practices/build_config.dart';
@@ -25,7 +26,7 @@ Future<void> runApplication({
   );
 
   // Allow self-signed certificates in development
-  if (BuildConfig.instance.environment == Environment.development) {
+  if (!kIsWeb && BuildConfig.instance.environment == Environment.development) {
     (ApiService.dio.httpClientAdapter as dynamic).onHttpClientCreate =
         (
           HttpClient client,
