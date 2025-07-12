@@ -195,6 +195,7 @@ class CoreTheme extends ThemeGenerator {
       listTileTheme: const ListTileThemeData(
         titleTextStyle: TextStyle(fontSize: 16),
         subtitleTextStyle: TextStyle(fontSize: 13),
+        contentPadding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
       ),
       tabBarTheme: const TabBarThemeData(
         labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

@@ -62,6 +62,8 @@ late final router = GoRouter(
     if (authToken == null) {
       return '/${AppRoute.login.name}';
     }
+
+    return null;
   },
   routes: [
     GoRoute(

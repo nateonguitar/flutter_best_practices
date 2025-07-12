@@ -46,7 +46,7 @@ class _AppState extends State<App> {
         return MaterialApp.router(
           title: 'Flutter Best Practices',
           scaffoldMessengerKey: App.scaffoldMessengerKey,
-          // debugShowCheckedModeBanner: false,
+          debugShowCheckedModeBanner: false,
           theme: lightTheme,
           darkTheme: darkTheme,
           themeMode: _themeManager.themeMode,

@@ -62,8 +62,8 @@ class ProductService extends ApiService with Logging {
 class MockProductService extends ProductService {
   @override
   Future<List<Product>> getAll() async {
-    await Future.delayed(const Duration(milliseconds: 200));
-    final products = List<Product>.unmodifiable(MockData.products);
+    await Future.delayed(const Duration(milliseconds: 750));
+    final products = List<Product>.from(MockData.products);
     log('Got ${products.length} products');
     return products;
   }
@@ -75,7 +75,7 @@ class MockProductService extends ProductService {
   }) async {
     log('Saving product');
     checkNetworkConnectivity();
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 750));
 
     final posting = product.id == null;
 
@@ -124,7 +124,7 @@ class MockProductService extends ProductService {
       'Deleting product: id=$productId',
     );
     checkNetworkConnectivity();
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 750));
 
     final index = MockData.products.indexWhere(
       (p) => p.id == productId,

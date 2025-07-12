@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_best_practices/exceptions.dart';
 import 'package:flutter_best_practices/services/api_service.dart';
 import 'package:flutter_best_practices/utils/logging.dart';
 
@@ -33,12 +32,10 @@ class AuthService extends ApiService with Logging {
 
 class MockAuthService extends AuthService with Logging {
   final String errorEmail;
-  final String networkTimeoutEmail;
   final bool validateAuthTokenSuccess;
 
   MockAuthService({
     this.errorEmail = 'error@example.com',
-    this.networkTimeoutEmail = 'networktimeout@example.com',
     this.validateAuthTokenSuccess = true,
   });
 
@@ -47,14 +44,11 @@ class MockAuthService extends AuthService with Logging {
     required String username,
     required String password,
   }) async {
-    log('MockAuthService.login called with: $username / $password');
+    log('Logging in');
     checkNetworkConnectivity();
-    await Future.delayed(const Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 750));
     if (username == errorEmail) {
       throw DioException(requestOptions: RequestOptions(path: 'login'));
-    }
-    if (username == networkTimeoutEmail) {
-      throw NetworkTimeoutException();
     }
     authToken.value = 'mock_token';
   }
@@ -66,7 +60,7 @@ class MockAuthService extends AuthService with Logging {
     if (authToken.value == null) {
       throw Error();
     }
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 750));
     if (!validateAuthTokenSuccess) {
       throw DioException(
         requestOptions: RequestOptions(
