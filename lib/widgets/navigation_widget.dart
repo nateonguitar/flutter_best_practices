@@ -31,7 +31,6 @@ class NavigationWidget extends StatefulWidget {
 }
 
 class _NavigationWidgetState extends State<NavigationWidget> {
-  late ThemeData _theme;
   late MediaQueryData _mediaQuery;
 
   final _navigationBlocker = Provider.get<NavigationGuard>();
@@ -57,7 +56,6 @@ class _NavigationWidgetState extends State<NavigationWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _theme = Theme.of(context);
     _mediaQuery = MediaQuery.of(context);
     if (_mediaQuery.size.width < 800) {
       return Material(
