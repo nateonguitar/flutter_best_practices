@@ -33,6 +33,7 @@ class ConnectivityService extends DeferredChangeNotifier with Logging {
       _statuses = result;
       final prevConnected = connected;
       connected =
+          _statuses.contains(ConnectivityResult.vpn) ||
           _statuses.contains(ConnectivityResult.wifi) ||
           _statuses.contains(ConnectivityResult.mobile) ||
           _statuses.contains(ConnectivityResult.ethernet);
