@@ -22,7 +22,7 @@ class CoreTheme extends ThemeGenerator {
   // This color was in the style guide but was a duplicate of almostBlackColor
   // const bluishGreyColor = Color(0xFF080F12);
 
-  static BorderRadius get inputBorderRadius => BorderRadius.zero;
+  static BorderRadius get inputBorderRadius => BorderRadius.circular(4);
   static EdgeInsets get listPadding => const EdgeInsets.only(
     top: 20,
     bottom: 80,
@@ -59,7 +59,10 @@ class CoreTheme extends ThemeGenerator {
   ThemeData generate({ThemeData? baseTheme}) {
     final standardTextStyle = buildStandardTextStyle();
     final inputDecorationTheme = InputDecorationTheme(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 12,
+        vertical: 12,
+      ),
       // Default border (rarely seen)
       border: OutlineInputBorder(
         borderRadius: CoreTheme.inputBorderRadius,
@@ -138,7 +141,9 @@ class CoreTheme extends ThemeGenerator {
       ),
       dialogTheme: const DialogThemeData(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
         ),
       ),
       inputDecorationTheme: inputDecorationTheme,
@@ -146,7 +151,9 @@ class CoreTheme extends ThemeGenerator {
         margin: EdgeInsets.zero,
         elevation: 1,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(8),
+          ),
         ),
       ),
       dividerTheme: const DividerThemeData(thickness: 1),
@@ -154,14 +161,21 @@ class CoreTheme extends ThemeGenerator {
         inputDecorationTheme: inputDecorationTheme,
         menuStyle: MenuStyle(
           shape: WidgetStateProperty.all(
-            const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+            const RoundedRectangleBorder(
+              borderRadius: BorderRadius.zero,
+            ),
           ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4),
+          ),
+          padding: const EdgeInsets.symmetric(
+            vertical: 16,
+            horizontal: 12,
+          ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
@@ -177,33 +191,51 @@ class CoreTheme extends ThemeGenerator {
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero,
           ),
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+          padding: const EdgeInsets.symmetric(
+            vertical: 16,
+            horizontal: 12,
+          ),
         ),
       ),
       toggleButtonsTheme: ToggleButtonsThemeData(
         borderWidth: 2,
         borderRadius: inputBorderRadius,
       ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
       ),
       snackBarTheme: const SnackBarThemeData(
         behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+        ),
       ),
-      checkboxTheme: const CheckboxThemeData(side: BorderSide(width: 2)),
+      checkboxTheme: const CheckboxThemeData(
+        side: BorderSide(width: 2),
+      ),
       listTileTheme: const ListTileThemeData(
         titleTextStyle: TextStyle(fontSize: 16),
         subtitleTextStyle: TextStyle(fontSize: 13),
-        contentPadding: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+        contentPadding: EdgeInsets.symmetric(
+          horizontal: 4,
+          vertical: 8,
+        ),
       ),
       tabBarTheme: const TabBarThemeData(
-        labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        labelStyle: TextStyle(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+        ),
         unselectedLabelStyle: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.normal,
         ),
-        labelPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+        labelPadding: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 4,
+        ),
         indicatorSize: TabBarIndicatorSize.tab,
         indicator: BoxDecoration(),
       ),
