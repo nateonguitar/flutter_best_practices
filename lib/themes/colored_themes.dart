@@ -42,7 +42,9 @@ class LightTheme extends ThemeGenerator {
       inputBorderColorFocused: CoreTheme.greyColor,
       inputHintColor: CoreTheme.greyColor,
       inputBackgroundColor: const Color(0xFFEFEFEF),
+      dialogBackgroundColor: const Color(0xFFFFFFFF),
       cardBackgroundColor: const Color(0xFFEFEFEF),
+      floatingWidgetElevation: 8,
     );
   }
 }
@@ -62,7 +64,7 @@ class DarkTheme extends ThemeGenerator {
       errorContainer: errorColor.withAlpha(25),
       onErrorContainer: const Color(0xFFE0E0E0),
       onError: const Color(0xFFE0E0E0),
-      surface: const Color(0xFF0F0F0F),
+      surface: const Color(0xFF101010),
       onSurface: const Color(0xFFE0E0E0),
       shadow: Colors.black,
     );
@@ -86,7 +88,9 @@ class DarkTheme extends ThemeGenerator {
       inputBorderColorFocused: CoreTheme.greyColor,
       inputHintColor: CoreTheme.greyColor,
       inputBackgroundColor: const Color(0xFF121212),
-      cardBackgroundColor: const Color.fromARGB(255, 51, 51, 51),
+      dialogBackgroundColor: const Color(0xFF141414),
+      cardBackgroundColor: const Color(0xFF333333),
+      floatingWidgetElevation: 1,
     );
   }
 }
@@ -104,7 +108,9 @@ ThemeData _coloredTheme({
   required Color inputBorderColorFocused,
   required Color inputHintColor,
   required Color inputBackgroundColor,
+  required Color dialogBackgroundColor,
   required Color cardBackgroundColor,
+  required double floatingWidgetElevation,
 }) {
   final popupMenuShape =
       baseTheme.popupMenuTheme.shape as RoundedRectangleBorder;
@@ -252,6 +258,10 @@ ThemeData _coloredTheme({
     floatingActionButtonTheme: baseTheme.floatingActionButtonTheme.copyWith(
       backgroundColor: buttonColor,
       foregroundColor: colorScheme.onPrimary,
+      elevation: floatingWidgetElevation,
+    ),
+    dialogTheme: baseTheme.dialogTheme.copyWith(
+      backgroundColor: dialogBackgroundColor,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: baseTheme.elevatedButtonTheme.style?.copyWith(
@@ -300,6 +310,7 @@ ThemeData _coloredTheme({
     dropdownMenuTheme: baseTheme.dropdownMenuTheme.copyWith(
       menuStyle: baseTheme.dropdownMenuTheme.menuStyle?.copyWith(
         backgroundColor: WidgetStateProperty.all(colorScheme.surface),
+        elevation: WidgetStateProperty.all(floatingWidgetElevation),
       ),
     ),
     cardTheme: baseTheme.cardTheme.copyWith(color: cardBackgroundColor),
@@ -308,6 +319,7 @@ ThemeData _coloredTheme({
       shape: popupMenuShape.copyWith(
         side: popupMenuShape.side.copyWith(color: dividerColor),
       ),
+      elevation: floatingWidgetElevation,
     ),
   );
 }

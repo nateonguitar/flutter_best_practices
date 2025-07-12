@@ -108,6 +108,11 @@ class _SettingsPageState extends State<SettingsPage> with Logging {
       iconEnabledColor: _theme.textTheme.bodyMedium?.color,
       value: _themeManager.themeMode,
       borderRadius: BorderRadius.zero,
+      elevation:
+          _theme.dropdownMenuTheme.menuStyle?.elevation?.resolve({
+            WidgetState.focused,
+          })?.toInt() ??
+          8,
       items: [
         for (final choice in ThemeModeChoice.values)
           DropdownMenuItem(
