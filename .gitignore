@@ -123,6 +123,8 @@ app.*.symbols
 # As an example, allow the generated files to be committed.
 !database.g.dart
 
+.vscode/
+
 lib/main_dev**.dart
 !lib/main_dev.example.dart
 personal_readme.txt
