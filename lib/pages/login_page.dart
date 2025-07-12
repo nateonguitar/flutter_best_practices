@@ -40,6 +40,7 @@ class _LoginPageState extends State<LoginPage> with Logging {
   @override
   void initState() {
     super.initState();
+    logWidgetMounted();
     final loginAutofill = BuildConfig.instance.loginAutofill;
     if (loginAutofill != null) {
       _controllers.initFromAutofill(loginAutofill);

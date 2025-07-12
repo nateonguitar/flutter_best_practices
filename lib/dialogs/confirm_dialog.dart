@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_best_practices/themes/core_theme.dart';
+import 'package:flutter_best_practices/utils/logging.dart';
 
 class ConfirmDialog extends StatefulWidget {
   final Widget title;
@@ -25,7 +26,13 @@ class ConfirmDialog extends StatefulWidget {
   State<ConfirmDialog> createState() => _ConfirmDialogState();
 }
 
-class _ConfirmDialogState extends State<ConfirmDialog> {
+class _ConfirmDialogState extends State<ConfirmDialog> with Logging {
+  @override
+  void initState() {
+    super.initState();
+    logWidgetMounted();
+  }
+
   @override
   Widget build(BuildContext context) {
     final widthConstraint = BoxConstraints(

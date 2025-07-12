@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_best_practices/utils/logging.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -9,9 +10,15 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with Logging {
   late ThemeData _theme;
   int _counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    logWidgetMounted();
+  }
 
   @override
   Widget build(BuildContext context) {
